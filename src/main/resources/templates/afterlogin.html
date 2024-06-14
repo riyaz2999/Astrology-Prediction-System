@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zodiac Sign Calculator</title>
+    <style>
+        body {
+			background-image: url('https://wallpaperaccess.com/full/13394.png');
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            margin: 55px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        #container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0;
+        }
+
+        input, select {
+            padding: 5px;
+            margin-bottom: 10px;
+            width: 100%;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        h2 {
+            margin-top: 20px;
+            color: #333;
+        }
+
+        #result {
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        #photo img {
+            width: 20%;
+            margin-top: 10px;
+        }
+
+        #characteristic {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Zodiac Sign Calculator</h1>
+
+        <label for="name">Your Name:</label>
+        <input type="text" placeholder="Enter full name" id="name">
+
+         <label for="phone">Your Phone Number:</label>
+        <input type="tel" id="phone" pattern="[0-9]{10}" placeholder="Enter a 10-digit phone number" required>
+
+         <label for="gender">Your Gender:</label>
+        <select id="gender">
+            <option value="" disabled selected>Select Gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+        </select>
+
+        <label for="time">Time of Birth:</label>
+        <input type="time" placeholder="Enter Time of Birth" id="time" name="time" required>
+
+        <label for="month">Enter your birth month (1-12): </label>
+        <input type="number" placeholder="Enter valid Birthday" id="month" min="1" max="12">
+        
+        <label for="day">Enter your birth day (1-31): </label>
+        <input type="number" placeholder="Enter valid Birth month" id="day" min="1" max="31">
+
+        <button onclick="calculateZodiac()">Predict</button>
+
+        <h2>Your Zodiac Sign:</h2>
+        <p id="result">Fill in all the details</p>
+        
+        <a href="/">Go to Home</a>
+
+        <div id="photo"></div>
+        <div id="characteristic"></div>
+    </div>
+
+    <script>
+        function calculateZodiac() {
+            var name = document.getElementById("name").value;
+            var phone = document.getElementById("phone").value;
+            var gender = document.getElementById("gender").value;
+            var time = document.getElementById("time").value;
+            var birthmonth = parseInt(document.getElementById("month").value);
+            var birthday = parseInt(document.getElementById("day").value);
+            var result = "Unknown because you didn't put a valid date.";
+
+            if (birthmonth < 1 || birthmonth > 12 || birthday < 1 || birthday > 31) {
+                // Retract the prediction if the input is not valid
+                result = "Invalid birth month or day. Please enter a valid date.";
+                document.getElementById("photo").innerHTML = "";
+                document.getElementById("characteristic").innerHTML = "";
+            } 
+              
+
+             else if (birthmonth == 1&& birthday >= 20 || birthmonth == 2 && birthday <= 18 )
+             {
+                 result = ("Aquarius");
+                 document.getElementById("photo").innerHTML="<img src='https://www.horoscope.com/images-US/signs/profile-aquarius.png'width=20%>";
+                 document.getElementById("characteristic").innerHTML="Aquarians are extremely vulnerable and sensitive. Although you may often find them being surrounded by many friends but in reality they rarely have close friends and acquaintances. Aquarius is a universal sign which makes them public people. Hence Aquarians are often associated with clubs, organizations and forums and enthusiastically participate in intellectual discussions. Aquarians are great communicators as long as they are within their mental realm.";
+             }
+             
+             
+          else  if (birthmonth == 2&& birthday >= 19 || birthmonth == 3&& birthday <= 20)
+            {
+                 result = ("Pisces");
+                 document.getElementById("photo").innerHTML="<img src='https://www.horoscope.com/images-US/signs/profile-pisces.png'width=20%>";
+                 document.getElementById("characteristic").innerHTML="Pisceans live in their imaginary world that barely has a connection with the reality. They love to look at the world through a rosy window. When challenged by reality, Pisceans have the tendency to retreat into their world of imagination.";
+            }
+            
+          else  if ((birthmonth == 3 && birthday >= 21 || birthmonth == 4 && birthday <= 19) ||
+                (birthmonth == 4 && birthday >= 20 || birthmonth == 5 && birthday <= 20)) {
+                result = "Aries";
+                document.getElementById("photo").innerHTML = "<img src='https://www.horoscope.com/images-US/signs/profile-aries.png' alt='Aries Image'>";
+                document.getElementById("characteristic").innerHTML = "Aries, your spaceship is gearing up for launch and you are likely to feel a bit torn between love and work this month. When everything seems to be crumbling, remember the turbulence before a rocket is launched and shed deadweight as you move forward. Here's some good news! The Universe is flashing green lights for your ability to rake in the moolah once you are ready to shift your perception staying zen all along. Whenever you feel trapped, remember your mind is limitless, as are you. Weave in creative thought with your heart’s song - standing up for what you believe in, or weighing out pros and cons of everything that's up for grabs. In the face of competition, remember that your angels are holding up a custom magic wand for you so don't fret about a thing. Choose the most exciting option for you and feel free to go learn new things if you need to. Seek out advice from mentors or experienced figures this month to move forward with confidence. The best way to check in with yourself is to write down every thought, idea and emotion, circle back to it from a neutral space before making decisions. Reach for the stars with excitement and get on a brand new journey. Juggle your way through things and wing it along the way. Be a team player.";
+            }
+            else if ((birthmonth == 4 && birthday >= 20 || birthmonth == 5 && birthday <= 20) ||
+                     (birthmonth == 5 && birthday >= 21 || birthmonth == 6 && birthday <= 20)) {
+                result = "Taurus";
+                document.getElementById("photo").innerHTML = "<img src='https://www.horoscope.com/images-US/signs/profile-taurus.png' alt='Taurus Image'>";
+                document.getElementById("characteristic").innerHTML = "The first half of the month is likely to be action-packed with lots of buzzing activity around you, Taurus. Something moves forward quickly and you get closer to your victory. The eclipse is bringing in  huge shifts for you on the professional front, just be mindful of getting distracted and sidetracked. Around mid month, the cosmic forces advise you to take a break and touch base with yourself. With so much going on in the first half of May, the slower pace of the second half may make you feel an urge to get into a glass-half-empty mindset. But, here’s a reminder for you to balance thought and wisdom around this time. Slowing down doesn't always lead to a dead end. In fact it may help you choose your best way forward. Just look around to find the missing links and remember that you are divinely protected, so don't scramble around for change. Take your time to select your favourite cup before you begin filling it up.. Huge changes are being triggered for you this month and the Universe is talking to you in numbers. Whenever you see 55/555/5555 know that you are being supported through the changes that you are experiencing. And your Angels want you to make a wish whenever you see 11/111/1111 or 77/777/7777. Remember to ask for only what you want to attract, not what you want to banish.";
+            }
+            
+           else if (birthmonth == 5 && birthday >= 21 ||  birthmonth == 6 && birthday <= 20 )
+            {
+               result = ("Gemini");
+               document.getElementById("photo").innerHTML="<img src='https://www.horoscope.com/images-US/signs/profile-gemini.png'width=20%>";
+               document.getElementById("characteristic").innerHTML="Gemini, if things have been feeling uncertain or if you have been feeling a major sense of lack in your finances, it could be because of an ongoing conflict either at work or at home , or just a conflicted mindset between what you desire and your subconscious sense of self-worth. Around the first week of May you may feel pushed to go on and find newer lands to explore, and this may not necessarily be by choice. But the good part is that moving forward with a clear and complete understanding of your skills and knowledge will help you pick what you are best at and create something wonderful from it. Instead of focussing on perfection, focus on progress and your efforts will not be in vain. Channel your laser focussed vibe into creating one chapter at a time for yourself, while keeping the overall theme of your book in mind. Traditional perspectives or recent authority figures may have not been able to make the most of your gifts, but that was a good thing because here you are, embarking on such a rewarding journey yourself. Use May’s grounding and empowering energy to get your footing right to keep scaling new heights.";
+  
+             }
+             
+            else if (birthmonth == 6 && birthday >= 21 || birthmonth == 7&& birthday <= 22)
+             {
+               result = ("Cancer");
+               document.getElementById("photo").innerHTML="<img src='https://www.horoscope.com/images-US/signs/profile-cancer.png'width=20%>";
+               document.getElementById("characteristic").innerHTML="Cancerians are emotional. Their lives are often inflicted with mood shifts. You can find a Canerian in different moods even during a day.The true emotion of Cancer however is hidden behind their composure. But they are soft creatures and can be hurt easily by unkind words.People of the Cancer zodiac sign can be prone to depression and other mental issues. However, cancers are great family people and enjoy big families around them.";
+       
+              }
+              
+               else if (birthmonth == 7&& birthday >= 23 ||  birthmonth == 8 && birthday <= 22)
+                {
+                  result = ("Leo");
+                  document.getElementById("photo").innerHTML="<img src='https://www.horoscope.com/images-US/signs/profile-leo.png'width=20%>";
+                  document.getElementById("characteristic").innerHTML="Leo, the month starts off with an amazing opportunity in the form of a business partnership, a consultancy offer or a career move that needs you to work with another person as an equal. This is a gift sent straight from Source to fall gently on your lap while you trot along on your racehorse with your prized moneybags. However, the key theme this month for you would be maintaining mental balance and acuity. Powerful shifts are happening for you around the eclipse. So, while you have put in serious efforts in trying to forge out a cast iron armour for yourself, here’s a gentle reminder - to be aware of not letting previous dissatisfaction or boredom influence this phase of life. Instead, adopt a fresh perspective. Allow the contentment from your personal life flow over into your work life and see the magic that conspires. Detach from the idea of feeling like you deserve to celebrate only if you work yourself to death. Your magic lies in being you, so be unfiltered and attract your dream life now.";
+                }
+           
+              else if (birthmonth == 8 && birthday >= 23 || birthmonth == 9 && birthday <= 22)
+                 {
+                  result = ("Virgo");
+                  document.getElementById("photo").innerHTML="<img src='https://www.horoscope.com/images-US/signs/profile-virgo.png'width=20%>";
+                  document.getElementById("characteristic").innerHTML="Virgo, you have been toiling hard and alone to tie some loose ends, and now you are at a place where you are waiting on your ships to arrive. You intuitively know what needs to be done and you are willing to sit on your throne allowing the play to unfold as per your co-direction with the Universe. The more you close your eyes and look within, the clearer your way ahead will feel. If you have been trying to keep your cool in turbulent waters, your guides want you to know that your commitment to your purpose was being tested. The Universe wasn’t saying no, it was just asking you if you were sure. The beauty about living your purpose is that, each time it evolves, you must show up differently. And here you are, Virgo, with your  creative hat on exploring things differently. If you have been thinking of working in non-conventional or creative fields or starting something new, take this as your sign and jump right in. Your vision for perfection will be put to good use, even if it ruffles some feathers.";
+                 }
+           
+             else  if (birthmonth == 9&& birthday >= 23  || birthmonth == 10&& birthday <= 22)
+                {
+                    result = ("Libra");
+                    document.getElementById("photo").innerHTML="<img src='https://www.horoscope.com/images-US/signs/profile-libra.png'width=20%>";
+                    document.getElementById("characteristic").innerHTML="Libra, you may have been eagerly awaiting your seeds to sprout after all the great efforts that have gone in along the way. Your angels want to sweep in and let you know to not lose heart if things have conspired differently for you. It would be wise to seek out advice from mentors and like-minded folk, instead of feeling trapped to get a new set of eyes on this. If something has passed you by previously or in the beginning of May, trust that it has opened doors for something better suited for you. Once you cut open the blindfolds, you will be able to clearly see. Pick options that feel right for you and are a better fit to your personality. Your ability to see in black and white will be highly valued in your field of interest, so choose accordingly. It is a good month to go back to organising parts of your career that may feel a bit redundant - your resume, skills, or just finish off some paperwork that may have been long pending. In your quest to find something more meaningful, remember to look around for existing opportunities with a fresh lens because they are right here. Focus on the bigger goals to make decisions this month and choose long term job satisfaction over temporary monetary gains. ";
+                }
+                
+              else  if (birthmonth == 10 && birthday >= 23 || birthmonth == 11 && birthday <= 21)
+                {
+                    result = ("Scorpio");
+                    document.getElementById("photo").innerHTML="<img src='https://www.horoscope.com/images-US/signs/profile-scorpio.png'width=20%>";
+                    document.getElementById("characteristic").innerHTML="You may have just walked away from a dysfunctional partnership or a toxic work environment, Scorpio, and while the other party may be feeling bad, you are reminded to drop the swords. This month, gear up to step into your role as the Emperor of your life as a much deserved and well awaited season begins. Instead of looking at all the ways in which your work life has previously brought you dissatisfaction, look at the sparkly new cup being offered to you which brings with it emotional, material and financial security. If you have been feeling like you have been doing everything all alone, it is your season to enjoy fruits of your sweet labour. A new more fulfilling partnership or job offer is on the cards. Now step in like an innocent fool untouched by past failures. You are not beginning all over again, you are beginning with a completely refined version of you and your skillset. Keep learning on the go, but remember to dive right in first.";
+                 }
+           
+               else if (birthmonth == 11 && birthday >= 22 || birthmonth == 12 && birthday <= 21)
+                 {
+                    result = ("Sagittarius");
+                    document.getElementById("photo").innerHTML="<img src='https://www.horoscope.com/images-US/signs/profile-sagittarius.png'width=20%>";
+                    document.getElementById("characteristic").innerHTML="You may be sitting in a fine place enjoying all the intricate beauties of life, dear Capricorn, and you may be more than willing to share this bountiful harvest with others. This is the mindset of an abundant person - sharing freely while remembering the ability to receive as being limitless. Your intuition is on fleek this month and your unique talents and skills put you in a commanding position. It would be wise to hold your cards close, while you play the game to maximise your potential rewards. The eclipse may be triggering some unknown fears, and coming from a space of awareness may be the best way forward. Not everything that surfaces is for you to integrate, so release what needs letting go of. Overall this month feels ripe with potential and possibilities, and you, my brilliant soul, are so very deserving of this. Your hard work and consistency has brought you to this mystery box waiting to be revealed. What conspires will be nothing short of magical."
+                 }
+
+              else if(birthmonth == 12 && birthday >= 22 || birthmonth == 1 && birthday <= 19)
+                 { 
+                    result = ("Capricorn");
+                    document.getElementById("photo").innerHTML="<img src='https://www.horoscope.com/images-US/signs/profile-capricorn.png'width=20%>";
+                    document.getElementById("characteristic").innerHTML="Members of this sign has an insatiable desire to climb higher and during this course they can also become selfish and might not hesitate to sacrifice other’s interests in fulfilling their goals.Capricorns may seem risk averse but in reality they carefully plan all their moves ahead and rehearse them to perfection.";
+                 }
+  
+               
+            document.getElementById("result").innerHTML = result;
+        }
+    </script>
+</body>
+</html>

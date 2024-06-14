@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <title>Login/Sign Up Page</title>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"/>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <div class="card-header bg-primary text-white">
+            <h3>EMPLOYEE LOGIN/SIGN UP PAGE</h3>
+        </div>
+        <div class="card-body">
+            <!-- Login Form -->
+            <form th:action="@{/login}" method="post">
+                <h4>Login</h4>
+                <div class="form-group">
+                    <label for="loginUsername">Username:</label>
+                    <input type="text" class="form-control" id="loginUsername" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password:</label>
+                    <input type="password" class="form-control" id="loginPassword" name="password" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+
+            <!-- Sign Up Form -->
+            <form th:action="@{/signup}" method="post">
+                <h4>Sign Up</h4>
+                <div class="form-group">
+                    <label for="signupFirstName">First Name:</label>
+                    <input type="text" class="form-control" id="signupFirstName" name="firstname" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupLastName">Last Name:</label>
+                    <input type="text" class="form-control" id="signupLastName" name="lastname" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupEmail">Email:</label>
+                    <input type="email" class="form-control" id="signupEmail" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupPhone">Phone Number:</label>
+                    <input type="tel" class="form-control" id="signupPhone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupPassword">Password:</label>
+                    <input type="password" class="form-control" id="signupPassword" name="password" required>
+                </div>
+                <button type="submit" class="btn btn-success">Sign Up</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
